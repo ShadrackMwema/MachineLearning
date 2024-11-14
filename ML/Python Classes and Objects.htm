@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" prefix="og: http://ogp.me/ns#" >
+
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<title>Python Classes and Objects - GeeksforGeeks</title>
+
+
+
+                            <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Classes   
+<!-- adding article schema markup -->
+
+
+<!--POST SCHEMA through API-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "id": "https://www.geeksforgeeks.org/python-classes-and-objects/"
+
+  },
+  "description": "A class is a user-defined blueprint or prototype from which objects are created. Classes provide a means of bundling data and functionality together. Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Python"
+    },
+    {
+      "@type": "Thing",
+      "name": "PythonOop"
+    }
+  ]
+}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GeeksforGeeks",
+  "url": "https://www.geeksforgeeks.org/",
+  "logo": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200817185016/gfg_complete_logo_2x-min.png",
+  "description": "A computer science portal for geeks. It contains well written, well thought and well explained computer science and programming articles, quizzes and practice/competitive programming/company interview Questions.",
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Sandeep Jain",
+      "url": "https://in.linkedin.com/in/sandeep-jain-b3940815"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/geeksforgeeks.org/",
+    "https://twitter.com/geeksforgeeks",
+    "https://www.linkedin.com/company/1299009",
+    "https://www.youtube.com/geeksforgeeksvideos/"
+  ]
+}</script>
+
+<script type='text/javascript' async="async" src='https://www.geeksforgeeks.org/wp-content/themes/iconic-one/js/gfg.min.js?ver=13.15'></script>
+
+<link rel='shortlink' href='https://www.geeksforgeeks.org/?p=350625' />
+<style>
+#wpadminbar{
+background: #ff0000 !important;
+}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+<link rel="icon" href="https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200-100x100.png" sizes="32x32" />
+<link rel="icon" href="https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200.png" />
+<meta name="msapplication-TileImage" content="https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200.png" />
+
+<!--
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+      '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+</script>
+
+ AutoAds
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-9465609616171866",
+enable_page_level_ads: true
+});
+</script>
+-->
+
+
+
+
+<style>
+
+#internal-promo-section{
+  display: none !important;
+}
+
+@media (max-width:1043px) and (min-width:992px) {
+ .hide-1043992 {
+   display: none!important;
+ }
+}
+
+.mobile-header-list-item{
+    padding-left:30px; 
+    padding-right:10px;
+    margin-top:5px;
+}
+
+.mobile-header-list{
+    border-bottom: 1px solid rgba(158, 158, 158, 0.3) !important;
+}
+
+.mobile-header-list .dropdown-title{
+    border-bottom: none !important;
+    font-size: 16px!important; 
+    padding: 0px!important; 
+    padding-left: 45px!important; 
+    font-weight: normal;
+}
+
+.mobile-header-list .upside::after{
+    transform: rotate(180deg);
+}
+
+</style>
+<!-- End Google Tag Manager -->
+<!-- Global site tag (gtag.js) - Google Ads: 474915276 -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-474915276"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-474915276');
+</script> -->
+
+</head>
+
+<body class="post-template-default single single-post postid-350625 single-format-standard custom-background custom-background-white">
+
+    <script>
+        // Dark mode script
+
+        const gfgThemeList = Object.freeze({
+            LIGHT: "gfgThemeLight",
+            DARK: "gfgThemeDark"
+        })
+        const getThemeFromCookie = () => {
+            let gfg_def_theme = "";
+            let cookies = document.cookie;
+            let cooks = cookies.split(";");
+        
+            for (let i = 0; i < cooks.length; i++) {   
+                let icook = cooks[i].split("=");
+                if (icook[0].trim() == "gfg_theme") {
+                    gfg_def_theme = icook[1].trim();
+                }
+            }
+            return gfg_def_theme
+        }
+        if(!(post_slug.includes('premium-plans-payment/') || post_slug.includes('premium-plans/'))){
+            var isDarkMode = getThemeFromCookie() == gfgThemeList.DARK ? true : false;
+            document.querySelector("body").setAttribute("data-dark-mode", isDarkMode);
+        }
+ 
+
+        function setSearchBarFocus() {
+          const myTimeout = setTimeout(searchBarFocus, 0);
+          function searchBarFocus() {
+            document.getElementById("gcse-search-input").focus();
+          }
+        }
+
+        
+    </script>
+
+
+        <!-- right now only search is visible for mobile view because of css and all are visible for web view -->
+            <ul class="header-main__left-list" data-nl="false">
+                <li class="header-main__left-list-item gcse-search_li p-relative" aria-expanded="false" data-expandable="false">
+                    <div class="gcse-form-search-suggestion_wrapper">
+                        <form id="gcse-form" class="gcse-form_class p-relative closeChatScreen" data-sm="false">
+                            <span class="front-search-icon"><i class="gfg-icon gfg-icon_search gfg-icon_white gcse-search__icon gcse-search-icon_grey"></i> </span>
+                            <input class="gcse-search-input__wrapper" id="gcse-search-input" aria-expanded="false" placeholder="Search..." autocomplete="off" />
+                            <i class="gfg-icon gfg-icon_times gfg-icon_white hide-search"></i>
+                            <button  aria-label="search" type="submit" class="gcse-search__btn not-expanded">
+                                <i class="gfg-icon gfg-icon_search gfg-icon_white gcse-search__icon"></i>
+                            </button>
+                        </form>
+                        <div class="gfg-search-suggestion_wrapper" style="display:none"></div>
+                    <div>
+                </li>
+                                <li>
+                    <div class="darkMode-wrap" data-mode="Switch to Dark Mode">
+                        <button aria-label="toggle theme" data-gfg-action="toggleGFGTheme">
+                            <div id="darkMode-wrap-red-dot" style="height:12px;width:12px;background-color:#EB2222;border-radius:999999px;position:absolute;top:4px;right:0;display:none;"></div>
+                            <i class="gfg-icon gfg-icon_dark-mode"></i>
+                        </button>
+                        <span id="darkModeTooltipText"></span>
+                    </div>
+                </li>
+                
+                <li class="header-main__left-list-item google-translate-parent-element" aria-expanded="false" data-expanded="true">
+                    <div class="translate" id="g_translater">
+                        <div id="google_translate_element" data-show="false"></div>
+                    </div>
+                    <i class ="gfg-icon gfg-icon_translate googleTranslateToggle" data-gfg-action="google_translate_element"></i>
+                    <!-- removed below code from here to load google translate js dynamically -->
+                    <!-- <script>
+                        var m = false;
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                            setTimeout(function(){
+                                if (jQuery( window ).width() < 768){
+                                    m = true;
+                                     jQuery('#g_translater').detach().appendTo('#google_translate_mobile');                            
+                                }
+                            }, 7000);
+                        }
+                        jQuery( window ).resize(function() {
+                            if (jQuery( window ).width() < 768 && m == false){
+                                m = true;
+                                jQuery('#g_translater').detach().appendTo('#google_translate_mobile');  
+                            } else if (jQuery( window ).width() >= 768 && m == true){
+                                m = false;
+                                jQuery('#g_translater').detach().prependTo('.google-translate-parent-element');                            
+                            }
+                        });
+                    </script> -->
+                </li>
+                <li id="userProfileId" class="header-main__left-list-item p-relative" aria-expanded="false" data-expandable="false">
+                    <!-- Profile Section to be added via JS -->
+                </li>
+                            </ul>
+        </div>
+
+        <!-- for mobile only -->
+        
+        <!-- for mobile only -->
+               
+       </div>
+    </nav>
+   
+<script>
+    if(post_slug.includes('premium-plans-payment/') || post_slug.includes('premium-plans/')){
+        $(".header-main__slider").remove();
+    }
+    //getting tags for the page type data
+    let mobileView = false;
+    let pageTags = JSON.parse('null');
+    let allTags = JSON.parse('["Python","ProgrammingLanguage","PythonOOP"]');
+</script>
+<script>
+    window.have_dsa_term = false;
+    // var practiceTab = ; 
+</script>
+
+<style>
+    .wrapper {
+        flex-direction: column !important;
+    }
+    /* spinner css */
+    @keyframes spinner {
+        to {transform: rotate(360deg);}
+    }
+    
+    .spinner:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-top-color: #000;
+        animation: spinner .6s linear infinite;
+    }
+
+    .report-loader{
+        position: relative;
+        
+    }
+
+    .report-loader.spinner{
+        margin-left: 16px;
+    }
+    .badges{
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .badges .gfg-badge-icon.md::after{
+        transform: scale(0.25);
+        position:relative;
+        top: 2px;
+        left: -2px;
+    }
+    .sep{
+        margin: 0px 5px;
+        font-size: 20px;
+        color: var(--badge-name-color);
+    }
+    .pub-count{
+        font-size: 14px;
+        font-family: var(--font-secondary);
+    }
+    .badge-details{
+        display:none;
+    }
+    .badges{
+        cursor: pointer;
+        position: relative;
+        /* width: 0px;
+        height: 20px;
+        top: -32px; */
+    }
+    .badge-icon{
+        display: flex;
+        align-items: center;
+    }
+    .badge-content{
+        margin-left: 9px;
+    }
+    .badge-name{
+        color: var(--badge-nam-color);
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: capitalize;
+    }
+    .badge-data{
+        color: #A5A4A4;
+        font-size: 10px;
+    }
+    .badges:hover .badge-details{
+        display: block;
+        background: var(--badge-bg);
+        padding: 10px 18px 10px 18px;
+        position: absolute;
+        width: 175px;
+        top: -10px;
+        z-index: 10;
+        left: 112%;
+        box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+        border-radius: 5px;
+        /* transform-origin: top right; */
+    }
+    .badge-details::before {
+        content: "";
+        position: absolute;
+        transform: rotate(90deg);
+        /* transform-origin: right; */
+        left: -6px;
+        top: 50%;
+        margin-left: -17px;
+        border-width: 12px;
+        border-style: solid;
+        border-color: var(--badge-bg) transparent transparent transparent;
+        margin-top: -12px;
+    }
+    .badge-icon .icon{
+        border: 1px solid var(--icon-border-color);
+        padding: 4px 3px;
+        border-radius: 4px;
+        width: 22px;
+        height: 24px;
+        position: relative;
+    }
+    .b-icon-pos{
+        position: relative;
+        top: -34px;
+        left: -34px;
+    }
+    /* article viewer */
+    .article--viewer .a-wrapper{
+        margin-top: 0px !important;
+    }
+    .content{
+        padding-top: 10px !important;
+    }
+    .u-name{
+        font-size: 14px;
+    }
+    .article--viewer_content .a-wrapper .content{
+        padding-bottom: 10px !important;
+    }
+    .likeTooltipBottom{
+        font-size: 14px;
+    }
+    @media (max-width: 434px) {
+        .article-buttons.show-bg{
+            margin-top: 56px !important;
+        }
+    }
+    @media (max-width: 730px),
+            ((min-width: 992px) and (max-width:1100px))  {
+        .article--viewer .media{
+            position: relative;
+        }
+        .article--viewer .media{
+            margin-bottom: 0px !important;
+        }
+        .badges:hover .badge-details{
+            top: -56px;
+            left: 62px;
+        }
+        .badge-details::before{
+            transform: rotate(0deg);
+            left: 10%;
+            top: 117%;
+        }
+        .article-buttons.show-bg{
+            margin-top: 22px;
+            top: 0px !important;
+        }
+    }
+    @media ((min-width:731px) and (max-width:1223px)) {
+        .article-buttons.show-bg{
+            top: 18px;
+        }
+    }
+    @media ((min-width:993px) and (max-width:1190px)) {
+        .article--viewer .media{
+            position: relative;
+        }
+        .article--viewer .media{
+            margin-bottom: 25px !important;
+        }
+    }
+</style>
+<!-- Survey modal implementation -->
+<script>
+    function getCookie(name) {
+        function escape(s) { return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1'); }
+        var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+        return match ? match[1] : null;
+    }
+</script>
+<!-- END Survey modal implementation-->
+
+<!-- Open in App Button and CSS-->
+
+<!-- Above code is for old openInApp pop-up with open in app and continue buttons-->
+
+<div id='openInApp-modal' class='openInApp'>
+    <a href = 'https://geeksforgeeksapp.page.link/?link=https://www.geeksforgeeks.org/python-classes-and-objects/?type%3Darticle%26id%3D350625&apn=free.programming.programming&isi=1641848816&ibi=org.geeksforgeeks.GeeksforGeeksDev&efr=1' class='openInAppLink'>
+        <span style='color: #fff;'>Open In App</span>
+    </a>
+</div>
+    <script>
+        var consentValue = localStorage.getItem("gfg_cc");
+        var isIOS = !!navigator.platform && /iPad|iPhone|iPod|MacIntel/.test(navigator.platform) && navigator.maxTouchPoints > 0;
+        const isSafari = navigator.userAgent.indexOf("Safari") > -1;
+        const isMozilla = navigator.userAgent.indexOf("Mozilla") > -1;
+        if(consentValue){
+            if(window.innerHeight > window.innerWidth && navigator.maxTouchPoints > 1 && (isSafari || isMozilla || navigator.userAgentData.mobile)){
+                $('.openInApp').css({
+                    display: "block"
+                });
+                $('#scrollTopBtn').css({
+                    bottom: "44px"
+                });
+                //adding a new class to check stats for clicks on iOS and Android
+                isIOS ? jQuery('.openInAppLink').addClass("oia-iOS") : $('.openInAppLink').addClass("oia-android");      //for openInApp Link
+            }
+        }
+        
+    </script>
+    <style>
+        .openInApp{
+            display: none;
+            bottom: 0px;
+            width: 100%;
+            position: fixed;
+            z-index: 1025;
+            opacity: 0.93;
+        }
+        .openInAppLink{
+            height: 44px;
+            background: var(--color-gfg);
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            padding: 12px;
+            font-size: large;
+        }
+        .openInAppLink, .openInAppLink:hover, .openInAppLink:active, .openInAppLink:visited, .openInAppLink:focus {
+            text-decoration:none;
+        }
+    </style>
+<!-- END Open in App Button and CSS-->
+
+            <script>
+                companyTagsArray = JSON.parse('[]');
+                categoryTagsArray = JSON.parse('["python"]');
+            </script>
+                            <div class="text">
+                                                                <p dir="ltr" style="text-align: justify;"><span>A class is a user-defined blueprint or prototype from which objects are created. Classes provide a means of bundling data and functionality together. Creating a new class creates a new type of object, allowing new instances of that type to be made. Each class instance can have attributes attached to it to maintain its state. Class instances can also have methods (defined by their class) for modifying their state.</span></p>
+<p dir="ltr" style="text-align: justify;"><span>To understand the need for creating a class and object in </span><a href="https://www.geeksforgeeks.org/python-programming-language/" rel="noopener"><span>Python</span></a><span> let&#8217;s consider an example, let&#8217;s say you wanted to track the number of dogs that may have different attributes like breed and age. If a list is used, the first element could be the dog&#8217;s breed while the second element could represent its age. Let&#8217;s suppose there are 100 different dogs, then how would you know which element is supposed to be which? What if you wanted to add other properties to these dogs? This lacks organization and it&#8217;s the exact need for classes.</span></p><div id="GFG_AD_gfg_mobile_336x280" style="margin: 5px 0;"></div>
+<p dir="ltr"><b><strong>Syntax: </strong></b><span>Class Definition</span></p>
+<pre><span>class ClassName:</span><br><span>    # Statement</span><br></pre><p dir="ltr"><b><strong>Syntax: </strong></b><span>Object Definition</span></p>
+<pre><span>obj = ClassName()</span><br><span>print(obj.atrr)</span><br></pre><p dir="ltr" style="text-align: justify;"><span>The class creates a user-defined </span><a href="https://www.geeksforgeeks.org/data-structures/" rel="noopener"><span>data structure</span></a><span>, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A class is like a blueprint for an object.</span></p>
+<p dir="ltr"><b><strong>Some points on Python class:</strong></b></p>
+<ul><li value="1"><span>Classes are created by keyword class.</span></li><li value="2"><span>Attributes are the variables that belong to a class.</span></li><li value="3"><span>Attributes are always public and can be accessed using the dot (.) operator. Eg.: My class.Myattribute</span></li></ul><h2><span>Creating a Python Class</span></h2><p dir="ltr"><span>Here, the class keyword indicates that you are creating a class followed by the name of the class (Dog in this case).</span></p><div id="GFG_AD_Desktop_InContent_ATF_336x280" style="text-align:center; max-height: 280px;"></div><div id="GFG_AD_gfg_mobile_336x280_1" style="margin: 5px 0;"></div>
+<gfg-tabs data-run-ide="false" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=k>class</span> <span class=nc>Dog</span><span class=p>:</span>
+    <span class=n>sound</span> <span class=o>=</span> <span class=s2>&quot;bark&quot;</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><h2><span>Object of Python Class</span></h2><p dir="ltr" style="text-align: justify;"><span>In </span><a href="https://www.geeksforgeeks.org/courses/search?query=python" target="_blank" rel="noopener"><span>Python programming</span></a><span> an Object is an instance of a Class. A class is like a blueprint while an instance is a copy of the class with </span><i><em class="GFGEditorTheme__textItalic">actual values</em></i><span>. It&#8217;s not an idea anymore, it&#8217;s an actual dog, like a dog of breed pug who&#8217;s seven years old. You can have many dogs to create many different instances, but without the class as a guide, you would be lost, not knowing what information is required.</span></p><div id="_GFG_ABP_Incontent_728x90" style="text-align:center;"></div>
+<p dir="ltr" style="text-align: justify;"><span>An object consists of:</span></p>
+<ul><li value="1"><b><strong>State:</strong></b><span> It is represented by the attributes of an object. It also reflects the properties of an object.</span></li><li value="2"><b><strong>Behavior:</strong></b><span> It is represented by the methods of an object. It also reflects the response of an object to other objects.</span></li><li value="3"><b><strong>Identity:</strong></b><span> It gives a unique name to an object and enables one object to interact with other objects.</span></li></ul><p dir="ltr"><img src="https://media.geeksforgeeks.org/wp-content/uploads/Blank-Diagram-Page-1-5.png" alt="python class" width="inherit" height="inherit"></p>
+<h3><span>Declaring Class Objects (Also called instantiating a class)</span></h3><p dir="ltr" style="text-align: justify;"><span>When an object of a class is created, the class is said to be instantiated. All the instances share the attributes and the behavior of the class. But the values of those attributes, i.e. the state are unique for each object. A single class may have any number of instances.</span></p>
+<p dir="ltr"><b><strong>Example:</strong></b></p>
+<p dir="ltr"><img src="https://media.geeksforgeeks.org/wp-content/uploads/Blank-Diagram-Page-1-3.png" alt="python declaring an object" width="inherit" height="inherit" loading="lazy"></p><div style="text-align:center;margin:20px 0; max-height: 280px;" id="GFG_AD_gfg_outstream_incontent"></div>
+<h2><span>Example of Python Class and object</span></h2><p dir="ltr"><span>Creating an object in Python involves instantiating a class to create a new instance of that class. This process is also referred to as object instantiation.</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=c1># Python3 program to</span>
+<span class=c1># demonstrate instantiating</span>
+<span class=c1># a class</span>
+<span class=k>class</span> <span class=nc>Dog</span><span class=p>:</span>
+
+    <span class=c1># A simple class</span>
+    <span class=c1># attribute</span>
+    <span class=n>attr1</span> <span class=o>=</span> <span class=s2>&quot;mammal&quot;</span>
+    <span class=n>attr2</span> <span class=o>=</span> <span class=s2>&quot;dog&quot;</span>
+
+    <span class=c1># A sample method</span>
+    <span class=k>def</span> <span class=nf>fun</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;I&#39;m a&quot;</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>attr1</span><span class=p>)</span>
+        <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;I&#39;m a&quot;</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>attr2</span><span class=p>)</span>
+
+
+<span class=c1># Driver code</span>
+<span class=c1># Object instantiation</span>
+<span class=n>Rodger</span> <span class=o>=</span> <span class=n>Dog</span><span class=p>()</span>
+
+<span class=c1># Accessing class attributes</span>
+<span class=c1># and method through objects</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>Rodger</span><span class=o>.</span><span class=n>attr1</span><span class=p>)</span>
+<span class=n>Rodger</span><span class=o>.</span><span class=n>fun</span><span class=p>()</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><b><strong>Output:</strong></b></p>
+<pre><span>mammal</span><br><span>I'm a mammal</span><br><span>I'm a dog</span><br></pre><p dir="ltr" style="text-align: justify;"><span>In the above example, an object is created which is basically a dog named Rodger. This class only has two class attributes that tell us that Rodger is a dog and a mammal.</span></p>
+<p dir="ltr"><b><strong>Explanation :</strong></b></p>
+<p dir="ltr" style="text-align: justify;"><span>In this example, we are creating a Dog class and we have created two class variables </span><b><strong>attr1 and attr2</strong></b><span>. We have created a method named </span><b><strong>fun()</strong></b><span> which returns the string &#8220;I&#8217;m a, {attr1}&#8221; and I&#8217;m a, {attr2}. We have created an object of the Dog class and we are printing at the </span><b><strong>attr1 </strong></b><span>of the object. Finally, we are calling the </span><b><strong>fun()</strong></b><span> </span><a href="https://www.geeksforgeeks.org/python-functions/" rel="noopener"><span>function</span></a><span>.</span></p>
+<h3><span>Self Parameter</span></h3><p dir="ltr"><span>When we call a method of this object as myobject.method(arg1, arg2), this is automatically converted by Python into MyClass.method(myobject, arg1, arg2) – this is all the special </span><a href="https://www.geeksforgeeks.org/self-in-python-class/" rel="noopener"><span>self</span></a><span> is about.&nbsp;</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=k>class</span> <span class=nc>GFG</span><span class=p>:</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>company</span><span class=p>):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>company</span> <span class=o>=</span> <span class=n>company</span>
+
+    <span class=k>def</span> <span class=nf>show</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;Hello my name is &quot;</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=o>+</span><span class=s2>&quot; and I&quot;</span> <span class=o>+</span>
+              <span class=s2>&quot; work in &quot;</span><span class=o>+</span><span class=bp>self</span><span class=o>.</span><span class=n>company</span><span class=o>+</span><span class=s2>&quot;.&quot;</span><span class=p>)</span>
+
+
+<span class=n>obj</span> <span class=o>=</span> <span class=n>GFG</span><span class=p>(</span><span class=s2>&quot;John&quot;</span><span class=p>,</span> <span class=s2>&quot;GeeksForGeeks&quot;</span><span class=p>)</span>
+<span class=n>obj</span><span class=o>.</span><span class=n>show</span><span class=p>()</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><span>The </span><a href="https://www.geeksforgeeks.org/self-in-python-class/" rel="noopener"><span>Self</span></a><span> Parameter does not call it to be Self, You can use any other name instead of it. Here we change the self to the word someone and the output will be the same.</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=k>class</span> <span class=nc>GFG</span><span class=p>:</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=n>somename</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>company</span><span class=p>):</span>
+        <span class=n>somename</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+        <span class=n>somename</span><span class=o>.</span><span class=n>company</span> <span class=o>=</span> <span class=n>company</span>
+
+    <span class=k>def</span> <span class=nf>show</span><span class=p>(</span><span class=n>somename</span><span class=p>):</span>
+        <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;Hello my name is &quot;</span> <span class=o>+</span> <span class=n>somename</span><span class=o>.</span><span class=n>name</span> <span class=o>+</span>
+              <span class=s2>&quot; and I work in &quot;</span><span class=o>+</span><span class=n>somename</span><span class=o>.</span><span class=n>company</span><span class=o>+</span><span class=s2>&quot;.&quot;</span><span class=p>)</span>
+
+
+<span class=n>obj</span> <span class=o>=</span> <span class=n>GFG</span><span class=p>(</span><span class=s2>&quot;John&quot;</span><span class=p>,</span> <span class=s2>&quot;GeeksForGeeks&quot;</span><span class=p>)</span>
+<span class=n>obj</span><span class=o>.</span><span class=n>show</span><span class=p>()</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><b><strong>Output: </strong></b><span>Output for both of the codes will be the same.</span></p>
+<pre><span>Hello my name is John and I work in GeeksForGeeks.</span><br></pre><p dir="ltr"><b><strong>Explanation:</strong></b></p>
+<p dir="ltr" style="text-align: justify;"><span>In this example, we are creating a GFG class and we have created the </span><b><strong>name, and company</strong></b><span> instance variables in the constructor. We have created a method named </span><b><strong>show()</strong></b><span> which returns the string &#8220;Hello my name is &#8221; + {name} +&#8221; and I work in &#8220;+{company}+&#8221;.&#8221;.We have created a person class object and we passing the name </span><b><strong>John and Company </strong></b><span>GeeksForGeeks to the instance variable. Finally, we are calling the </span><b><strong>show()</strong></b><span> of the class.</span></p><div style="text-align:center;margin:20px 0;max-height:280px" id="GFG_AD_gfg_outstream_incontent-1"></div>
+<h3><span>Pass Statement</span></h3><p dir="ltr" style="text-align: justify;"><span>The program&#8217;s execution is unaffected by the</span><b><strong> </strong></b><a href="https://www.geeksforgeeks.org/python-pass-statement/" rel="noopener"><b><strong>pass</strong></b></a><span> statement&#8217;s inaction. It merely permits the program to skip past that section of the code without doing anything. It is frequently employed when the syntactic constraints of Python demand a valid statement but no useful code must be executed.</span></p>
+<gfg-tabs data-run-ide="false" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=k>class</span> <span class=nc>MyClass</span><span class=p>:</span>
+    <span class=k>pass</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><h2><span>__init__() method</span></h2><p dir="ltr" style="text-align: justify;"><span>The </span><a href="https://www.geeksforgeeks.org/__init__-in-python/" rel="noopener"><span>__init__</span></a><span> method is similar to constructors in </span><a href="https://www.geeksforgeeks.org/cpp-tutorial/" rel="noopener"><span>C++</span></a><span> and </span><a href="https://www.geeksforgeeks.org/java-tutorial/" rel="noopener"><span>Java</span></a><span>. Constructors are used to initializing the object’s state. Like methods, a constructor also contains a collection of statements(i.e. instructions) that are executed at the time of Object creation. It runs as soon as an object of a class is instantiated. The method is useful to do any initialization you want to do with your object.</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=c1># Sample class with init method</span>
+<span class=k>class</span> <span class=nc>Person</span><span class=p>:</span>
+
+    <span class=c1># init method or constructor</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+
+    <span class=c1># Sample Method</span>
+    <span class=k>def</span> <span class=nf>say_hi</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Hello, my name is&#39;</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=p>)</span>
+
+
+<span class=n>p</span> <span class=o>=</span> <span class=n>Person</span><span class=p>(</span><span class=s1>&#39;Nikhil&#39;</span><span class=p>)</span>
+<span class=n>p</span><span class=o>.</span><span class=n>say_hi</span><span class=p>()</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><b><strong>Output:</strong></b><span>&nbsp;</span></p>
+<pre><span>Hello, my name is Nikhil</span><br></pre><p dir="ltr" style="text-align: justify;"><b><strong>Explanation:</strong></b></p>
+<p dir="ltr" style="text-align: justify;"><span>In this example, we are creating a Person class and we have created a </span><b><strong>name</strong></b><span> instance variable in the constructor. We have created a method named as say_hi() which returns the string &#8220;Hello, my name is {name}&#8221;.We have created a person class object and we pass the name Nikhil to the instance variable. Finally, we are calling the say_hi() of the class.</span></p>
+<h2><span>__str__() method</span></h2><p dir="ltr" style="text-align: justify;"><span>Python has a particular method called</span><b><strong> __str__()</strong></b><span>. that is used to define how a </span><b><strong>class</strong></b><span> object should be represented as a string. It is often used to give an object a human-readable textual representation, which is helpful for logging, debugging, or showing users object information. When a class object is used to create a string using the built-in functions print() and str(), the </span><b><strong>__str__() </strong></b><span>function is automatically used. You can alter how objects of a </span><b><strong>class</strong></b><span> are represented in strings by defining the</span><b><strong> __str__()</strong></b><span> method.</span></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=k>class</span> <span class=nc>GFG</span><span class=p>:</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>company</span><span class=p>):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>company</span> <span class=o>=</span> <span class=n>company</span>
+
+    <span class=k>def</span> <span class=fm>__str__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=k>return</span> <span class=sa>f</span><span class=s2>&quot;My name is </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=si>}</span><span class=s2> and I work in </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>company</span><span class=si>}</span><span class=s2>.&quot;</span>
+
+
+<span class=n>my_obj</span> <span class=o>=</span> <span class=n>GFG</span><span class=p>(</span><span class=s2>&quot;John&quot;</span><span class=p>,</span> <span class=s2>&quot;GeeksForGeeks&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>my_obj</span><span class=p>)</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><b><strong>Output:</strong></b></p>
+<pre><span>My name is John and I work in GeeksForGeeks.</span><br></pre><p dir="ltr" style="text-align: justify;"><b><strong>Explanation:</strong></b></p>
+<p dir="ltr" style="text-align: justify;"><span>In this example, We are creating a class named GFG.In the class, we are creating two instance variables </span><b><strong>name and company</strong></b><span>. In the __str__() method we are returning the </span><b><strong>name</strong></b><span> instance variable and </span><b><strong>company</strong></b><span> instance variable. Finally, we are creating the object of GFG class and we are calling the __str__() method.</span></p>
+<h2><span>Class and Instance Variables</span></h2><p dir="ltr" style="text-align: justify;"><a href="https://www.geeksforgeeks.org/difference-between-instance-variable-and-class-variable/" rel="noopener"><span>Instance variables</span></a><span> are for data, unique to each instance and class variables are for attributes and methods shared by all instances of the class. Instance variables are variables whose value is assigned inside a constructor or method with self whereas class variables are variables whose value is assigned in the class.</span></p><div style="text-align:center;margin:20px 0;max-height:280px" id="GFG_AD_gfg_outstream_incontent-2"></div>
+<p dir="ltr"><b><strong>Defining instance variables using a constructor.&nbsp;</strong></b></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=c1># Python3 program to show that the variables with a value</span>
+<span class=c1># assigned in the class declaration, are class variables and</span>
+<span class=c1># variables inside methods and constructors are instance</span>
+<span class=c1># variables.</span>
+
+<span class=c1># Class for Dog</span>
+
+
+<span class=k>class</span> <span class=nc>Dog</span><span class=p>:</span>
+
+    <span class=c1># Class Variable</span>
+    <span class=n>animal</span> <span class=o>=</span> <span class=s1>&#39;dog&#39;</span>
+
+    <span class=c1># The init method or constructor</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>breed</span><span class=p>,</span> <span class=n>color</span><span class=p>):</span>
+
+        <span class=c1># Instance Variable</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>breed</span> <span class=o>=</span> <span class=n>breed</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>color</span> <span class=o>=</span> <span class=n>color</span>
+
+
+<span class=c1># Objects of Dog class</span>
+<span class=n>Rodger</span> <span class=o>=</span> <span class=n>Dog</span><span class=p>(</span><span class=s2>&quot;Pug&quot;</span><span class=p>,</span> <span class=s2>&quot;brown&quot;</span><span class=p>)</span>
+<span class=n>Buzo</span> <span class=o>=</span> <span class=n>Dog</span><span class=p>(</span><span class=s2>&quot;Bulldog&quot;</span><span class=p>,</span> <span class=s2>&quot;black&quot;</span><span class=p>)</span>
+
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Rodger details:&#39;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Rodger is a&#39;</span><span class=p>,</span> <span class=n>Rodger</span><span class=o>.</span><span class=n>animal</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Breed: &#39;</span><span class=p>,</span> <span class=n>Rodger</span><span class=o>.</span><span class=n>breed</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Color: &#39;</span><span class=p>,</span> <span class=n>Rodger</span><span class=o>.</span><span class=n>color</span><span class=p>)</span>
+
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;</span><span class=se>\n</span><span class=s1>Buzo details:&#39;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Buzo is a&#39;</span><span class=p>,</span> <span class=n>Buzo</span><span class=o>.</span><span class=n>animal</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Breed: &#39;</span><span class=p>,</span> <span class=n>Buzo</span><span class=o>.</span><span class=n>breed</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Color: &#39;</span><span class=p>,</span> <span class=n>Buzo</span><span class=o>.</span><span class=n>color</span><span class=p>)</span>
+
+<span class=c1># Class variables can be accessed using class</span>
+<span class=c1># name also</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&quot;</span><span class=se>\n</span><span class=s2>Accessing class variable using class name&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>Dog</span><span class=o>.</span><span class=n>animal</span><span class=p>)</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><b><strong>Output</strong></b><span>:</span></p>
+<pre><span>Rodger details:</span><br><span>Rodger is a dog</span><br><span>Breed:  Pug</span><br><span>Color:  brown</span><br><span>Buzo details:</span><br><span>Buzo is a dog</span><br><span>Breed:  Bulldog</span><br><span>Color:  black</span><br><span>Accessing class variable using class name</span><br><span>dog</span><br></pre><p dir="ltr"><b><strong>Explanation:</strong></b></p>
+<p dir="ltr" style="text-align: justify;"><span>A class named Dog is defined with a </span><a href="https://www.geeksforgeeks.org/g-fact-34-class-or-static-variables-in-python/" rel="noopener"><span>class variable</span></a><span> animal set to the string &#8220;dog&#8221;. Class variables are shared by all objects of a class and can be accessed using the class name. Dog class has two instance variables </span><b><strong>breed and color. </strong></b><span>Later we are creating two objects of the </span><b><strong>Dog</strong></b><span> class and we are printing the value of both objects with a class variable named animal.</span></p>
+<p dir="ltr"><b><strong>Defining instance variables using the normal method:</strong></b></p>
+<gfg-tabs data-run-ide="true" data-mode="light">
+            <gfg-tab slot="tab">Python</gfg-tab>
+<gfg-panel slot="panel" data-code-lang="python3">
+    <code class="language-python3"><div class=highlight><pre><span></span><span class=c1># Python3 program to show that we can create</span>
+<span class=c1># instance variables inside methods</span>
+
+<span class=c1># Class for Dog</span>
+
+
+<span class=k>class</span> <span class=nc>Dog</span><span class=p>:</span>
+
+    <span class=c1># Class Variable</span>
+    <span class=n>animal</span> <span class=o>=</span> <span class=s1>&#39;dog&#39;</span>
+
+    <span class=c1># The init method or constructor</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>breed</span><span class=p>):</span>
+
+        <span class=c1># Instance Variable</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>breed</span> <span class=o>=</span> <span class=n>breed</span>
+
+    <span class=c1># Adds an instance variable</span>
+    <span class=k>def</span> <span class=nf>setColor</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>color</span><span class=p>):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>color</span> <span class=o>=</span> <span class=n>color</span>
+
+    <span class=c1># Retrieves instance variable</span>
+    <span class=k>def</span> <span class=nf>getColor</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>color</span>
+
+
+<span class=c1># Driver Code</span>
+<span class=n>Rodger</span> <span class=o>=</span> <span class=n>Dog</span><span class=p>(</span><span class=s2>&quot;pug&quot;</span><span class=p>)</span>
+<span class=n>Rodger</span><span class=o>.</span><span class=n>setColor</span><span class=p>(</span><span class=s2>&quot;brown&quot;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>Rodger</span><span class=o>.</span><span class=n>getColor</span><span class=p>())</span>
+</pre></div></code>
+</gfg-panel></gfg-tabs><p dir="ltr"><b><strong>Output:</strong></b></p>
+<pre><span>brown</span><br></pre><p dir="ltr" style="text-align: justify;"><b><strong>Explanation:</strong></b></p>
+<p dir="ltr" style="text-align: justify;"><span>In this example, We have defined a class named </span><b><strong>Dog </strong></b><span>and</span><b><strong> </strong></b><span>we have created a </span><a href="https://www.geeksforgeeks.org/g-fact-34-class-or-static-variables-in-python/" rel="noopener"><span>class variable</span></a><span> animal. We have created an instance variable breed in the </span><b><strong>constructor</strong></b><span>. The class Dog consists of two methods </span><b><strong>setColor</strong></b><span> and </span><b><strong>getColo</strong></b><span>r, they are used for creating and initializing an instance variable and retrieving the value of the instance variable. We have made an object of the </span><b><strong>Dog</strong></b><span> class and we have set the instance variable value to brown and we are printing the value in the terminal.</span></p>
+<h2><span>Conclusion </span></h2><p dir="ltr" style="text-align: justify;"><span>understanding Python classes and objects is fundamental for anyone looking to master Python programming. By now, you should have a solid grasp of how classes serve as blueprints for creating objects, and how objects are instances that encapsulate both data and functions. Embracing these concepts can significantly streamline your coding tasks and elevate your projects. If you&#8217;re eager to expand your Python knowledge further, consider enrolling in our </span><a href="https://www.geeksforgeeks.org/courses/python-course-certification-free" target="_blank" rel="noopener"><span>Free Python Course</span></a><span>. This course is designed to help you build on the fundamentals and explore more advanced Python features in a structured way.</span></p>
+
+
+                                  
+                                
+<style>
+	.article--container_content{
+		align-items: unset !important;
+	}
+	.sideBar {
+		position: sticky !important;
+	}
+	.gfg-icon_switch::after {
+		background-position: -40px -281px !important;
+	}
+	.gfg-icon_transaction::after {
+		background-position: -40px -321px !important;
+	}
+	.header-main__profile.selected+.mega-dropdown{
+		width: 225px !important;
+	}
+	#courses-container .course-price{
+		display:none;
+	}
+	/* .side--container_wscard .card-content .content .meta:empty, .practiceBannerFromPlugin{
+		display:none !important;
+	} */
+	.side--container_wscard .card-content .content .meta{
+		display:block !important;
+	}
+	.side--container_wscard .card-content .content .meta p{
+		background-color: rgba(254, 212, 91, 0.6);
+		font-size: 10pt;
+		font-weight: bold;
+		display: inline-block;
+		color: var(--color-black);
+		margin-top: 15px;
+		padding: 0px 5px;
+	}
+	#try-it{
+		display:initial !important;
+	}
+	#try-it .try-it-div{
+		line-height: 34px;
+	}
+	.gfg-icon_dark-mode::after {
+		background-position: -40px -680px;
+	}
+	.side--container_wscard .head{
+		font-size: 14px !important;
+	}
+	.nineDot-menu, .gfg-icon_ndot{
+		display: none;
+	}
+	#text-15{
+		flex-direction: column;
+	}
+	.mtq_correct_marker, .mtq_wrong_marker{
+		display: none;
+	}
+	.sidebar_wrapper > :last-child{
+		margin: unset !important;
+		margin-left: 5px !important;
+		margin-top: 20px !important;
+		top: 70px !important;
+	}
+	.darkMode-wrap{
+		bottom:1% !important;
+	}
+	#secondary .textwidget{
+		margin-left: auto;
+		margin-right: 0;
+		text-align: right;
+	}
+	#secondary .widget_text:last-child{
+		top: 70px !important;
+	}
+	@media(max-width:768px){
+		#scrollTopBtn{
+			display:none !important;
+		}
+	}
+	.rightbar_loggedin_promo_cta{
+		display:flex;
+		cursor:pointer;
+		margin-bottom:20px;
+	}
+</style>
+
+
+
+<!-- Chat bot is being shown for these category articles (8 -> linked-list 9172 -> AI-ML-DS, 1789 -> python  4667 -> math)  -->
+</body>
+</html>
+
+
+<!-- Dynamic page generated in 1.366 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2024-10-04 18:04:58 -->
+
+<!-- Compression = gzip -->
+<!-- super cache -->
